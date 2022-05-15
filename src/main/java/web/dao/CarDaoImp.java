@@ -1,10 +1,13 @@
 package web.dao;
 
+import org.springframework.stereotype.Component;
 import web.model.Car;
 
 import java.util.List;
 
+@Component
 public class CarDaoImp implements CarDao {
+
     private static final List<Car> carList;
 
     static {
@@ -18,8 +21,8 @@ public class CarDaoImp implements CarDao {
     }
 
     @Override
-    public List<Car> getCars(int amount) {
-        return (amount > carList.size() || amount <= 0)
+    public List<Car> getCars(Integer amount) {
+        return (amount == null || amount > carList.size() || amount <= 0)
                 ? carList
                 : carList.subList(0, amount);
     }
